@@ -1,0 +1,40 @@
+html, body {
+
+}
+
+#wrapper {
+
+	margin:5% auto 0 auto;
+	min-height:100px;
+	width: 500px;
+
+}
+	#widget {
+
+		background:transparent;
+		min-height:inherit;
+		width:100%;
+	}
+		ul.comments-container {
+
+			background:green;
+			float:left;
+			min-height:inherit;
+			width:100%;
+
+		}
+			li.comment {
+
+				background:red;
+				float:left;
+				height:50px;
+				width:inherit;
+
+			}
+		.comments-form {
+
+			background:yellow;
+			float:left;
+			min-height:inherit;
+			width:100%;
+		}
