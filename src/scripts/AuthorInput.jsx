@@ -7,6 +7,9 @@ var React 				= require('react');
  */
 var AuthorInput = React.createClass({
 
+	clearInputValue: function() {
+		this.setState({value: ''});
+	},
 	getInitialState: function() {
 		return {
 			value: ''
@@ -17,8 +20,11 @@ var AuthorInput = React.createClass({
 		this.setState({value: changeEvent.target.value});
 	},
 	render: function() {
+
+		this.props.getContext(this);
+
 		return (
-			<input ref="author" type="text" placeholder="Enter your name..." value={this.state.value} onChange={this.handleChange}/>
+			<input className="author-input" ref="author" type="text" placeholder="Enter your name..." value={this.state.value} onChange={this.handleChange}/>
 		);
 	}
 

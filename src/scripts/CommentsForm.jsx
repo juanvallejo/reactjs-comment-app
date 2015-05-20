@@ -13,14 +13,39 @@ var TextArea 			= require('./TextArea.jsx');
  */
 var CommentsForm = React.createClass({
 
+	authorInput: null,
+	textArea: null,
+
+	getAuthorContext: function(context) {
+		this.authorInput = context;
+	},
+	getTextAreaContext: function(context) {
+		this.textArea = context;
+	},
+	getAuthorInput: function() {
+		return (
+			this.authorInput
+		);
+	},
+	getTextArea: function() {
+		return (
+			this.textArea
+		);
+	},
+	addComment: function() {
+		this.getAuthorInput().clearInputValue();
+		this.getTextArea().clearInputValue();
+		this.props.addComment();
+	},
 	render: function() {
+
 		return (
 			<div className="comments-form">
 				<form>
-					<AuthorInput userInput={this.props.userInput}/>
-					<TextArea userInput={this.props.userInput}/>
+					<AuthorInput userInput={this.props.userInput} getContext={this.getAuthorContext}/>
+					<TextArea userInput={this.props.userInput} getContext={this.getTextAreaContext}/>
 				</form>
-				<SubmitButton userInput={this.props.userInput} data={this.props.data} addComment={this.props.addComment}/>
+				<SubmitButton userInput={this.props.userInput} data={this.props.data} addComment={this.addComment}/>
 			</div> // <!--#form-->
 		);
 	}

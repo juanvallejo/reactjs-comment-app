@@ -20,7 +20,7 @@ var CommentsList = React.createClass({
 			return (
 
 				<Comment key={commentId} author={comment.author}>
-					{comment.text}
+					<span className="text">{comment.text}</span>
 				</Comment>
 
 			);

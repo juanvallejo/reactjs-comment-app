@@ -16,6 +16,7 @@ var ApplicationWrapper = React.createClass({
 	render : function() {
 		return (
 			<div id="wrapper">
+				<div id="title">Comments</div>
 				<WidgetContainer userInput={this.props.userInput} data={this.props.data} addComment={this.props.addComment}/>
 			</div> // <!--#wrapper-->
 		);

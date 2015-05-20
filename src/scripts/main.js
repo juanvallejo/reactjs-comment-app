@@ -11,6 +11,7 @@ var Application = require('./Application.jsx');
  * once the page has loaded
  */
 window.addEventListener('load', function() {
+	Application.loadData();
 	Application.render();
 });
 

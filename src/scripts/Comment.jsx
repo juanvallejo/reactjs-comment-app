@@ -9,7 +9,7 @@ var Comment = React.createClass({
 
 	render: function() {
 		return (
-			<li className="comments">
+			<li className="comment">
 				<span className="author">{this.props.author}</span>
 				{this.props.children}
 			</li>

@@ -12,12 +12,7 @@ var ApplicationWrapper 	= require('./ApplicationWrapper.jsx');
 var Application = {
 
 	events: {},
-	data: [
-		{author: 'Juan Vallejo', text: 'Hello World!'},
-		{author: 'Test', text: 'Hi'},
-		{author: 'Kyle', text: 'test comment, #yolo'},
-		{author: 'Borat', text: 'nice to meet you'}
-	],
+	data: [],
 
 	userInput: {
 		author: '',
@@ -30,12 +25,17 @@ var Application = {
 			return;
 		}
 
+		// add data to local comments array and
+		// rerender components
 		Application.data.push({
 			author: Application.userInput.author,
 			text: Application.userInput.text
 		});
 
 		Application.render();
+
+		// save data locally for permanent storage
+		Application.saveData();
 
 	},
 
@@ -54,7 +54,7 @@ var Application = {
 	},
 
 	/**
-	 * Fires all callback functions in the array under the key specified
+	 * Calls all functions for a specific event
 	 */
 	emit: function(eventName, props) {
 
@@ -72,8 +72,45 @@ var Application = {
 
 	},
 
+	/**
+	 * Checks to see if there is locally stored data
+	 * and loads it as application comment data
+	 */
+	loadData: function() {
+
+		var appData = localStorage.getItem('data');
+
+		if(appData) {
+			Application.data = JSON.parse(appData);
+		}
+
+	},
+
+	/**
+	 * Save application data to local storage
+	 */
+	saveData: function() {
+
+		if(localStorage.getItem('data')) {
+			localStorage.removeItem('data');
+		}
+
+		localStorage.setItem('data', JSON.stringify(Application.data));
+	},
+
+	/**
+	 * Removes all data saved in local storage.
+	 */
+	clearData: function() {
+		localStorage.removeItem('data');
+	},
+
+	/**
+	 * Render application to the screen with
+	 * appropriate properties
+	 */
 	render: function() {
-		React.render(<ApplicationWrapper userInput={Application.userInput} addComment={Application.addComment} data={Application.data}/>, document.body);
+		React.render(<ApplicationWrapper userInput={Application.userInput} addComment={Application.addComment} data={Application.data}/>, document.getElementById('react-app'));
 	}
 
 };

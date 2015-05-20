@@ -1,14 +1,53 @@
-html, body {
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Molle:400italic);
 
+html, body {
+	width:100%;
+}
+
+body {
+
+	background:rgb(37,48,50) url(bg.jpg) no-repeat 0 0 fixed;
+	background-size:cover;
+	font:400 16px 'Open Sans';
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+	color:rgba(103,103,103,0.8);
+}
+
+#noise-overlay {
+
+	background:url(noise.png);
+	height:100%;
+	left:0;
+	position:fixed;
+	opacity:0.85;
+	top:0;
+	width:100%;
+
+}
+#react-app {
+	position:relative;
 }
 
 #wrapper {
 
-	margin:5% auto 0 auto;
+	margin:2.7% auto 0 auto;
 	min-height:100px;
-	width: 500px;
+	width: 350px;
 
 }
+	#title {
+		color:rgb(63,48,32);
+		font-family:'Molle';
+		font-size:2em;
+		font-style:italic;
+		line-height:100px;
+		margin:0 0 10px 0;
+		text-align:center;
+		width:100%;
+	}
 	#widget {
 
 		background:transparent;
@@ -17,24 +56,92 @@ html, body {
 	}
 		ul.comments-container {
 
-			background:green;
+			border-bottom:1px solid rgba(0,0,0,0.15);
 			float:left;
 			min-height:inherit;
+			padding:0 0 40px 0;
 			width:100%;
 
 		}
 			li.comment {
 
-				background:red;
+				background:rgba(255,255,255,0.7);
+				border-top:1px solid rgba(255,255,255,0.9);
+				border-radius:4px;
+				box-shadow:0 0 1px rgb(12,9,6);
 				float:left;
-				height:50px;
+				margin:15px 0;
+				min-height:10px;
+				padding:5px 0;
 				width:inherit;
 
 			}
+				li.comment span {
+					clear:left;
+					display:block;
+					font-size:0.85em;
+					margin:5px 0;
+					padding:0 10px;
+				}
+					li.comment span.text {
+						color:rgba(103,103,103,0.8);
+					}
+					li.comment span.author {
+
+						color:rgba(27,27,27,0.9);
+						font-weight:700;
+
+					}
+
 		.comments-form {
 
-			background:yellow;
+			background:transparent;
+			border-top:1px solid rgba(255,255,255,0.4);
 			float:left;
+			padding:50px 0 0 0;
 			min-height:inherit;
 			width:100%;
 		}
+			.comments-form input, .comments-form textarea {
+
+				background:rgba(255,255,255,0.7);
+				border:0;
+				color:rgb(56,56,56);
+				display:block;
+				font:inherit;
+				margin:0;
+				padding:0;
+				width:90%;
+
+			}
+				.comments-form input.author-input {
+
+					border-bottom:1px solid rgba(0,0,0,0.08);
+					border-radius:3px 3px 0 0;
+					padding:15px 5% 15px 5%;
+
+				}
+				.comments-form textarea.text-area {
+
+					border-top:1px solid rgba(255,255,255,0.2);
+					border-radius:0 0 3px 3px;
+					padding:15px 5% 0 5%;
+
+				}
+			.comments-form #submit {
+
+				border-top:1px solid rgba(255,255,255,0.2);	
+				border-radius:4px;
+				box-shadow:0 0 1px rgb(29,22,15);
+				color:rgba(63,47,32,0.7);
+				cursor:default;
+				display:block;
+				margin:10px 0 0 0;
+				padding:7px 0;
+				text-align:center;
+				width:100%;
+
+			}
+				.comments-form #submit:active {
+					background:rgba(114,85,58,0.1);
+				}
